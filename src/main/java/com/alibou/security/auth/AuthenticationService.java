@@ -129,6 +129,7 @@ public class AuthenticationService {
         }
         var jwtToken = jwtService.generateToken(user);
 
+        logger.info("Sending email to: {}", user.getEmail());
         emailService.sendEmail(user.getEmail(), "Login Notification", "You have successfully logged in.");
 
         return AuthenticationResponse.builder()
